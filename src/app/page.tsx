@@ -1,0 +1,28 @@
+"use client";
+import About from "@/components/About";
+import HeroSection from "@/components/HeroSection";
+import { Skills } from "@/components/icons/skills";
+import AppLayout from "@/components/Layout/Applayout";
+import HorizontalScrollSection from "@/components/Section";
+import WhatIdo from "@/components/whatIdo";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
+export default function HomePage() {
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { margin: "-300px" });
+
+  return (
+    <AppLayout>
+      <HeroSection />
+      {/* About section */}
+      <About />
+      <WhatIdo />
+      <HorizontalScrollSection />
+      <div className="h-screen flex items-center justify-center">
+        <h2 className="text-4xl font-bold text-gray-400">Next Section3 ↓</h2>
+      </div>
+    </AppLayout>
+  );
+}

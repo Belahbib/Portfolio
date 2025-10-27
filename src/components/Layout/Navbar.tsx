@@ -49,9 +49,17 @@ const Navbar = () => {
           >
             Projects
           </button>
-          <a href="#" className="text-white font-semibold hover:text-primary">
+          <button
+            className="text-white font-semibold hover:text-primary"
+            onClick={() => {
+              const section = document.getElementById("contact");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
             Contact
-          </a>
+          </button>
         </div>
       </div>
     </div>

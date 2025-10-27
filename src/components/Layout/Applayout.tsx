@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useScroll, useSpring } from "framer-motion";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -70,6 +71,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </motion.div>
         <Sidebar />
         <main ref={contentRef}>{children}</main>
+        <Footer />
       </div>
     </>
   );

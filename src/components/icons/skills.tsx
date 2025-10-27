@@ -29,20 +29,20 @@ export function Skills({
         height="14"
         rx="2"
         stroke="#ffffff"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <path
         d="M5 6L7 8L5 10"
         stroke={fill}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M10 10H14"
         stroke={fill}
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
     </svg>
   );

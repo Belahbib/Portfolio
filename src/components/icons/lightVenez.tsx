@@ -37,8 +37,8 @@ export function LightVenez({ className, width = 837, height = 401 }: Props) {
           y2="233.405"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FF7722" />
-          <stop offset="1" stop-color="#FFB800" />
+          <stop stopColor="#FF7722" />
+          <stop offset="1" stopColor="#FFB800" />
         </linearGradient>
       </defs>
     </svg>

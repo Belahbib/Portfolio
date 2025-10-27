@@ -12,20 +12,15 @@ import { NodeJsIcon } from "../icons/nodeJs";
 import { PostgresIcon } from "../icons/postgres";
 import { JavascriptIcon } from "../icons/javascript";
 import { NestJsIcon } from "../icons/nestJs";
-
-// Tech icon map
-const techIcons: Record<string, ReactElement> = {
-  react: <ReactIcon className="" width={28} height={28} />,
-  "next.js": <NextJsIcon width={28} height={28} />,
-  tailwindcss: <TailwindcssIcon width={28} height={28} />,
-  typescript: (
-    <TypescriptIcon width={28} height={28} className="rounded-full" />
-  ),
-  "node.js": <NodeJsIcon width={28} height={28} />,
-  postgresql: <PostgresIcon width={28} height={28} />,
-  javascript: <JavascriptIcon width={28} height={28} />,
-  "nest.js": <NestJsIcon width={28} height={28} />,
-};
+import { ExpressJsIcon } from "../icons/expressJs";
+import { GitIcon } from "../icons/git";
+import { GitLabIcon } from "../icons/gitlab";
+import { I18nextIcon } from "../icons/i18next";
+import { PlaywrightIcon } from "../icons/playwright";
+import { FramerMotionIcon } from "../icons/framerMotion";
+import { ReduxIcon } from "../icons/redux";
+import { ReactQueryIcon } from "../icons/reactQuery";
+import { MongoDbIcon } from "../icons/mongo";
 
 interface TechTagProps {
   name: string;
@@ -33,6 +28,31 @@ interface TechTagProps {
 }
 
 export function TechTag({ name, size = 28 }: TechTagProps) {
+  const techIcons: Record<string, ReactElement> = {
+    react: <ReactIcon className="" width={size} height={size} />,
+    "next.js": <NextJsIcon width={size} height={size} />,
+    tailwindcss: <TailwindcssIcon width={size} height={size} />,
+    typescript: (
+      <TypescriptIcon width={size} height={size} className="rounded-full" />
+    ),
+    "node.js": <NodeJsIcon width={size} height={size} />,
+    postgresql: <PostgresIcon width={size} height={size} />,
+    javascript: (
+      <JavascriptIcon width={size} height={size} className="rounded-full" />
+    ),
+    "nest.js": <NestJsIcon width={size} height={size} />,
+    i18next: <I18nextIcon width={size} height={size} />,
+    git: <GitIcon width={size} height={size} />,
+    gitlab: <GitLabIcon width={size} height={size} />,
+    playwright: <PlaywrightIcon width={size} height={size} />,
+    "express.js": (
+      <ExpressJsIcon width={size} height={size} className="rounded-full" />
+    ),
+    "framer-motion": <FramerMotionIcon width={size} height={size} />,
+    redux: <ReduxIcon width={size} height={size} />,
+    "react-query": <ReactQueryIcon width={size} height={size} />,
+    'mongo.db': <MongoDbIcon width={size} height={size} />,
+  };
   const key = name.toLowerCase();
   const icon = techIcons[key];
 
@@ -41,7 +61,7 @@ export function TechTag({ name, size = 28 }: TechTagProps) {
   return (
     <motion.div
       whileHover={{ scale: 1.7, y: -3 }}
-      transition={{ type: "spring", stiffness: 250, damping: 15 }}
+      transition={{ type: "spring", stiffness: 550, damping: 45 }}
       data-tooltip-id={`tooltip-${key}`}
       data-tooltip-content={name}
       className="flex items-center justify-center border border-white/10 bg-white/5 p-1 rounded-full hover:bg-white/10 transition-all duration-300 cursor-default"
@@ -49,7 +69,7 @@ export function TechTag({ name, size = 28 }: TechTagProps) {
       <div style={{ fontSize: size }}>{icon}</div>
       <Tooltip
         id={`tooltip-${key}`}
-        className="!bg-black !text-white !px-3 !py-1 !rounded-md !text-sm capitalize"
+        className="!bg-black !text-white  !rounded-md  capitalize"
       />
     </motion.div>
   );

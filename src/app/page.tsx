@@ -1,5 +1,6 @@
 "use client";
 import About from "@/components/About";
+import Contact from "@/components/contact";
 import HeroSection from "@/components/HeroSection";
 import { Skills } from "@/components/icons/skills";
 import AppLayout from "@/components/Layout/Applayout";
@@ -21,7 +22,7 @@ export default function HomePage() {
       <WhatIdo />
       <HorizontalScrollSection />
       <div className="h-screen flex items-center justify-center">
-        <h2 className="text-4xl font-bold text-gray-400">Next Section3 ↓</h2>
+        <Contact />
       </div>
     </AppLayout>
   );

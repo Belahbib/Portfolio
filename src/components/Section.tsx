@@ -242,9 +242,9 @@ export default function HorizontalScrollSection() {
                     animate="rest"
                   >
                     {[
-                      "/images/ZyloPay1.png",
-                      "/images/ZyloPay2.png",
-                      "/images/ZyloPay3.png",
+                      "/images/zyloPay1.png",
+                      "/images/zyloPay2.png",
+                      "/images/zyloPay3.png",
                     ].map((src, i) => (
                       <motion.div
                         key={i}

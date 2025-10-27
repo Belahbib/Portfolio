@@ -242,9 +242,9 @@ export default function HorizontalScrollSection() {
                     animate="rest"
                   >
                     {[
-                      "/images/zyloPay1.png",
-                      "/images/zyloPay2.png",
-                      "/images/zyloPay3.png",
+                      "/images/zylopay1.png",
+                      "/images/zylopay2.png",
+                      "/images/zylopay3.png",
                     ].map((src, i) => (
                       <motion.div
                         key={i}
@@ -280,7 +280,7 @@ export default function HorizontalScrollSection() {
                       >
                         <Image
                           src={src}
-                          alt={`ZyloPay Preview ${i + 1}`}
+                          alt={`zyloPay Preview ${i + 1}`}
                           fill
                           className="object-cover rounded-2xl"
                         />

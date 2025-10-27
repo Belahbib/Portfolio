@@ -235,7 +235,6 @@ export default function HorizontalScrollSection() {
                     </motion.button>
                   </div>
 
-                  {/* === RIGHT SIDE: STACKED IMAGES (hover spreads outside box) === */}
                   <motion.div
                     className="relative w-full h-full flex justify-center items-center overflow-visible rounded-xl"
                     initial="rest"
@@ -266,7 +265,7 @@ export default function HorizontalScrollSection() {
                           },
                           hover: {
                             x: i === 0 ? -370 : i === 1 ? 0 : 370,
-                            // y: i === 0 ? -40 : i === 1 ? 0 : 40, // move up & down
+                            // y: i === 0 ? -40 : i === 1 ? 0 : 40, 
                             scale: 1.05,
                             rotate: 0,
                             zIndex: 10 + i,

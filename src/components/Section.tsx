@@ -15,12 +15,16 @@ import Link from "next/link";
 import { ArrowRight } from "./icons/arrowRight";
 import { TechTag } from "./Helpers/techTags";
 import { ZylopaIcon } from "./icons/zylopay";
+import { MbfIcon } from "./icons/mbf";
+import Skills from "./skils";
 
 export default function HorizontalScrollSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const projetsRef = useRef<HTMLDivElement>(null);
   const projetsRef2 = useRef<HTMLDivElement>(null);
+  const projetsRef3 = useRef<HTMLDivElement>(null);
   const projetsInView2 = useInView(projetsRef2, { margin: "-300px" });
+  const projetsInView3 = useInView(projetsRef3, { margin: "-300px" });
   const projetsInView = useInView(projetsRef, { margin: "-300px" });
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -63,6 +67,12 @@ export default function HorizontalScrollSection() {
     "node.js",
     "nest.js",
     "postgresql",
+  ];
+
+  const mbfTech = [
+    "react",
+    "next.js",
+    "typescript",
   ];
 
   return (
@@ -265,7 +275,7 @@ export default function HorizontalScrollSection() {
                           },
                           hover: {
                             x: i === 0 ? -370 : i === 1 ? 0 : 370,
-                            // y: i === 0 ? -40 : i === 1 ? 0 : 40, 
+                            // y: i === 0 ? -40 : i === 1 ? 0 : 40,
                             scale: 1.05,
                             rotate: 0,
                             zIndex: 10 + i,
@@ -291,18 +301,108 @@ export default function HorizontalScrollSection() {
               </div>
             </motion.div>
           </div>
-          <div className="w-screen h-full flex items-center justify-center  ">
-            <h2 className="text-6xl font-bold">Panel 4</h2>
+
+          {/* third section --> projects 3 
+          /////////////////////////////
+          */}
+          <div
+            ref={projetsRef3}
+            className="w-screen h-full flex items-center justify-center  "
+            id="projects-section"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={projetsInView3 ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="max-w-7xl "
+            >
+              {" "}
+              <div className="relative px-32 pt-24 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-3xl h-fit">
+                <div className="absolute inset-0 rounded-2xl border border-white/20 pointer-events-none" />
+                <div className="grid grid-cols-2 gap-16 z-10 relative">
+                  <div className="">
+                    <div className="flex mb-8 gap-4 ">
+                      <MbfIcon width={100} height={100} />
+                      <h1 className="my-auto text-4xl font-bold">
+                        Ma Bonne Fée
+                      </h1>
+                    </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-3">
+                      {mbfTech.map((tech) => (
+                        <TechTag key={tech} name={tech} size={28} />
+                      ))}
+                    </div>
+                    <h2 className="text-xl font-bold text-white mt-4 relative">
+                      Ma Bonne Fée
+                    </h2>
+
+                    <p className="text-gray-300 text-md mt-4">
+                      MaBonneFee is an intuitive SaaS platform that helps users
+                      manage, track, and optimize their recurring
+                      subscriptions—all in one place. From streaming services to
+                      utility bills and mobile plans, MaBonneFee gives full
+                      visibility into monthly expenses, sends smart alerts for
+                      renewals, and helps users cancel or switch services
+                      effortlessly.
+                    </p>
+                    <motion.button
+                      whileHover={{
+                        scale: 1.05,
+                        y: -8,
+                        boxShadow: "0px 8px 24px rgba(255, 0, 136, 0.3)",
+                      }}
+                      className="mt-6 px-6 py-3  bg-white text-black  font-bold rounded-md hover:bg-white/30 transition-colors duration-300"
+                    >
+                      <Link
+                        href="https://mabonnefee.com/fr/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center"
+                      >
+                        Perview
+                        <ArrowRight
+                          width={20}
+                          height={20}
+                          fill="black"
+                          className="mt-1"
+                        />
+                      </Link>
+                    </motion.button>
+                  </div>
+                  <motion.div
+                    whileHover={{
+                      scale: 1.05,
+                      y: -8,
+                      boxShadow: "0px 8px 24px rgba(255, 0, 136, 0.3)",
+                      borderRadius: "0.75rem",
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                    }}
+                    className="overflow-hidden shadow-lg w-[110%] "
+                  >
+                    <Image
+                      src="/images/mbf.png"
+                      alt="Code Sample"
+                      width={500}
+                      height={200}
+                      className="rounded-t-xl object-cover w-full "
+                    />
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
-
-      {/* Extra vertical sections */}
       <div className="h-screen  flex items-center justify-center">
         <h2 className="text-4xl font-bold text-gray-400"></h2>
       </div>
-      <div className="h-screen flex items-center justify-center">
-        <h2 className="text-4xl font-bold text-gray-400">dada</h2>
+      <div className="flex items-center justify-center">
+        <Skills />
       </div>
     </section>
   );

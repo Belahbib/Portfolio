@@ -17,7 +17,7 @@ export function NextJsIcon({ className, width = 100, height = 100 }: Props) {
       className={className}
     >
       <g id="nextjs">
-        <g id="nextjs_2" clip-path="url(#clip0_790_2951)">
+        <g id="nextjs_2" clipPath="url(#clip0_790_2951)">
           <path
             id="Vector"
             d="M66.4769 40.0083H83.8952V43.2233H76.9855V60.1367H73.5304V43.2233H66.4769V40.0083Z"
@@ -40,8 +40,8 @@ export function NextJsIcon({ className, width = 100, height = 100 }: Props) {
           />
           <path
             id="Vector_5"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M20.5348 60.1368L4.31855 40H0V60.1284H3.45485V44.3024L16.1946 60.1368H20.5348Z"
             fill="black"
           />

@@ -50,7 +50,7 @@ export default function Contact() {
         className="max-w-2xl w-full text-center"
       >
         {/* Heading */}
-        <h2 className="text-5xl font-bold text-white mb-4">Get in Touch</h2>
+        <h2 className="text-5xl font-bold text-white mb-4 text-sans tracking-wider">Get in Touch</h2>
         <p className="text-gray-400 mb-10 text-lg">
           Have a project or collaboration in mind? Let’s talk!
         </p>

@@ -1,22 +1,28 @@
 import React from "react";
 import Avatar from "react-avatar";
 import { motion } from "framer-motion";
+import { EmojiIcon } from "./icons/emoji";
 
 export default function HeroSection() {
-  const text = `Hey, I’m <span class='bg-gradient-to-b from-primary to-purple-900 bg-clip-text text-transparent'>Achraf </span> ✨\n<span class='bg-gradient-to-b from-primary to-purple-900 bg-clip-text text-transparent'>Full Stack</span> Developer`;
-  const lines = text.split("\n");
+  const emoji = <EmojiIcon width={28} height={28} />;
+  const lines = [
+    // LINE 1: “Hey, I’m Achraf 😄”
+    <div key="line1" className="flex items-center gap-2">
+      <span>Hey, I’m</span>
+      <span className="bg-gradient-to-b from-primary to-purple-900 bg-clip-text text-transparent flex items-center gap-2">
+        Achraf
+        <EmojiIcon width={52} height={52} />
+      </span>
+    </div>,
 
-  const handleViewWork = () => {
-    const horizontalSection = document.getElementById("horizontal-section");
-    if (horizontalSection) {
-      horizontalSection.scrollIntoView({ behavior: "smooth" });
-
-      // Wait a bit to ensure section is in view, then trigger horizontal move
-      setTimeout(() => {
-        window.dispatchEvent(new CustomEvent("goToProjects"));
-      }, 800);
-    }
-  };  
+    // LINE 2: “Full Stack Developer”
+    <div key="line2">
+      <span className="bg-gradient-to-b from-primary to-purple-900 bg-clip-text text-transparent">
+        Full Stack
+      </span>{" "}
+      Developer
+    </div>,
+  ];
 
   return (
     <div className="relative min-h-screen">
@@ -31,6 +37,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
+            className="-mt-[150px] "
           >
             <Avatar
               src="images/logo.png"
@@ -38,7 +45,7 @@ export default function HeroSection() {
               round={true}
               size="200"
               textSizeRatio={2}
-              className="border border-gray-300 mt-[-50px] rounded-full"
+              className="border border-gray-300 rounded-full"
             />
           </motion.div>
 
@@ -52,8 +59,9 @@ export default function HeroSection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.8, duration: 0.6 }}
                   className="block"
-                  dangerouslySetInnerHTML={{ __html: line }}
-                />
+                >
+                  {line}
+                </motion.span>
               ))}
             </h1>
 

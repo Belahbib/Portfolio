@@ -1,5 +1,4 @@
 import { motion, useInView } from "framer-motion";
-import { Dev } from "./icons/dev";
 import React from "react";
 import { Skills } from "./icons/skills";
 
@@ -25,34 +24,101 @@ export default function WhatIdo() {
               What I can do{" "}
             </h2>
           </div>
-          <div className="text-[18px] text-gray-300 space-y-4 ml-6 grid grid-cols-2 gap-4">
-            <p>
-              Collaborate & Solve Problems I work closely with teams or clients
-              to turn ideas into functional, maintainable software—on time and
-              with purpose.
-            </p>
-            <p>
+          <div className="text-[18px] text-gray-300 space-y-2 ml-6 grid grid-cols-2 gap-x-4 ">
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                rotate: -2,
+                backgroundColor: "#ffffff",
+                color: "#000000",
+                borderColor: "#000000",
+                fontWeight: 600,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="border-2 p-8 bg-black/80 rounded-2xl text-white "
+            >
+              <p>
+                Collaborate & Solve Problems — I work closely with teams or
+                clients to turn ideas into functional, maintainable software—on
+                time and with purpose.
+              </p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                rotate: 2,
+                backgroundColor: "#ffffff",
+                color: "#000000",
+                borderColor: "#000000",
+                fontWeight: 600,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="border-2 p-8 bg-black/80 rounded-2xl"
+            >
+              <p>
+                {" "}
+                Build Full Web Applications From dynamic frontends with React to
+                scalable backends with Node.js, I develop complete,
+                production-ready web apps.
+              </p>
+            </motion.div>
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                rotate: -2,
+                backgroundColor: "#ffffff",
+                color: "#000000",
+                borderColor: "#000000",
+                fontWeight: 600,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="border-2 p-8 bg-black/80 rounded-2xl"
+            >
+              <p>
+                Design Responsive & Intuitive UIs I create clean, accessible,
+                and mobile-first user interfaces that deliver seamless
+                experiences across devices. <br />
+              </p>
+            </motion.div>
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                rotate: 2,
+                backgroundColor: "#ffffff",
+                color: "#000000",
+                borderColor: "#000000",
+                fontWeight: 600,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="border-2 p-8 bg-black/80 rounded-2xl"
+            >
               {" "}
-              Build Full Web Applications From dynamic frontends with React to
-              scalable backends with Node.js, I develop complete,
-              production-ready web apps.
-            </p>
-            <p>
-              Design Responsive & Intuitive UIs I create clean, accessible, and
-              mobile-first user interfaces that deliver seamless experiences
-              across devices. <br />
-            </p>
-            <p>
-              {" "}
-              Architect & Manage Databases Whether it’s structured data in
-              PostgreSQL/MySQL or flexible schemas in MongoDB, I design
-              efficient data models and APIs.
-            </p>
-            <p>
-              Deploy & Maintain Applications I handle deploymen t (using
-              platforms like Vercel, Render, or AWS), CI/CD setup, and
-              performance optimization for reliability and speed.
-            </p>
+              <p>
+                {" "}
+                Architect & Manage Databases Whether it’s structured data in
+                PostgreSQL/MySQL or flexible schemas in MongoDB, I design
+                efficient data models and APIs.
+              </p>
+            </motion.div>
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                rotate: -2,
+                backgroundColor: "#ffffff",
+                color: "#000000",
+                borderColor: "#000000",
+                fontWeight: 600,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="border-2 p-6 bg-black/80 rounded-2xl"
+            >
+              <p>
+                Deploy & Maintain Applications I handle deploymen t (using
+                platforms like Vercel, Render, or AWS), CI/CD setup, and
+                performance optimization for reliability and speed.
+              </p>
+            </motion.div>
           </div>
         </motion.div>
       </div>

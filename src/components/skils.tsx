@@ -2,10 +2,13 @@ import { motion, useInView } from "framer-motion";
 import React from "react";
 import Image from "next/image";
 import { TechTag } from "./Helpers/techTags";
+import { useTailwindBreakpoints } from "./hooks/breakPoint";
 
 export default function Skills() {
   const ref = React.useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref!, { margin: "-300px" });
+  const { sm, md, lg, xl, xxl } = useTailwindBreakpoints();
+  const margin = sm ? "-100px" : md ? "-300px" : lg ? "-300px" : "-300px";
+  const isInView = useInView(ref!, { margin: margin });
   const Programming = ["javascript", "typescript", "node.js"];
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1280;
 

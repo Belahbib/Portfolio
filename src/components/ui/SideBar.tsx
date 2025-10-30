@@ -43,7 +43,7 @@ export default function SidebarVariants() {
   };
 
   return (
-    <div className="md:hidden z-50 overflow-visible fixed ">
+    <div className="md:hidden z-50 overflow-visible fixed">
       {/* === Toggle Button === */}
 
       <motion.button
@@ -51,7 +51,7 @@ export default function SidebarVariants() {
         onClick={() => setIsOpen(!isOpen)}
         animate={{ rotate: isOpen ? 180 : 0 }}
         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-        className="fixed top-4 right-4 z-50  bg-white p-2 rounded-full  transition-transform hover:scale-105"
+        className="fixed top-2 right-4 z-50  bg-white p-2 rounded-full  transition-transform hover:scale-105"
       >
         <motion.div
           key={isOpen ? "cross" : "menu"}

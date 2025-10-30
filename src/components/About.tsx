@@ -7,8 +7,9 @@ import { useTailwindBreakpoints } from "./hooks/breakPoint";
 
 export default function About() {
   const ref = React.useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref!, { margin: "-300px" });
   const { sm, md, lg, xl, xxl } = useTailwindBreakpoints();
+  const margin = sm ? "-100px" : md ? "-300px" : lg ? "-300px" : "-300px";
+  const isInView = useInView(ref!, { margin: margin });
 
   const size = sm ? 120 : md ? 150 : lg ? 180 : xl ? 200 : xxl ? 200 : 200;
 

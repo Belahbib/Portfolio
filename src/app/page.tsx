@@ -17,12 +17,10 @@ export default function HomePage() {
 
   return (
     <AppLayout>
-      <div className="mt-[-5px]">
-        <SidebarVariants />
-      </div>
+      <SidebarVariants />
       <HeroSection />
       <About />
-      <WhatIdo />
+      <WhatIdo /> 
       <HorizontalScrollSection />
       <div className="h-screen flex items-center justify-center">
         <Contact />

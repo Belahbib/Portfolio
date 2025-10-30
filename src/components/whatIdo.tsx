@@ -1,21 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Skills } from "./icons/skills";
+import { useTailwindBreakpoints } from "./hooks/breakPoint";
 
 export default function WhatIdo() {
   const ref = React.useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref!, { margin: "-300px" });
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      setIsTablet(window.innerWidth < 1024);
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const { sm, md, lg, xl, xxl } = useTailwindBreakpoints();
+  const margin = sm ? "-100px" : md ? "-300px" : lg ? "-300px" : "-300px";
+  const isInView = useInView(ref!, { margin: margin });
 
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1280;
 

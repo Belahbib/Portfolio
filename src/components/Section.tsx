@@ -17,15 +17,19 @@ import { TechTag } from "./Helpers/techTags";
 import { ZylopaIcon } from "./icons/zylopay";
 import { MbfIcon } from "./icons/mbf";
 import Skills from "./skils";
+import { useTailwindBreakpoints } from "./hooks/breakPoint";
 
 export default function HorizontalScrollSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const projetsRef = useRef<HTMLDivElement>(null);
   const projetsRef2 = useRef<HTMLDivElement>(null);
   const projetsRef3 = useRef<HTMLDivElement>(null);
-  const projetsInView = useInView(projetsRef, { margin: "-300px" });
-  const projetsInView2 = useInView(projetsRef2, { margin: "-300px" });
-  const projetsInView3 = useInView(projetsRef3, { margin: "-300px" });
+  const {sm , md, lg, xl, xxl} = useTailwindBreakpoints();
+  const margin = sm ? "-100px" : md ? "-300px" : lg ? "-300px" : "-300px";
+  const projetsInView = useInView(projetsRef, { margin: margin });
+  const projetsInView2 = useInView(projetsRef2, { margin: margin });
+  const projetsInView3 = useInView(projetsRef3, { margin: margin });
+  
 
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1280;
 

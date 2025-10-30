@@ -81,7 +81,7 @@ export default function About() {
                 className="relative flex flex-col mt-5 items-start"
               >
                 {/* Connector Line + Text */}
-                <div className="relative flex  items-center ml-[5.9rem] md:ml-[3rem] lg:ml-[1.3rem] xl:ml-0 xxl:ml-32 ">
+                <div className="relative flex  items-center ml-[94px] md:ml-[3rem] lg:ml-[1.3rem] xl:ml-0 xxl:ml-32 ">
                   <span className="absolute xl:right-[8.5rem] right-[3.5rem] z-30 w-[12px] h-[12px] rounded-full bg-gradient-to-b from-primary to-[#ff0088] shadow-[0_0_6px_rgba(255,0,136,0.6)]" />
                   <span className="absolute right-full ml-[4rem] xl:w-[9rem] w-[4rem] h-[0.5px] bg-gradient-to-r from-primary to-[#ff0088] rounded-r-full z-10" />
                 </div>

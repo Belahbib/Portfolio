@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer
       ref={ref}
-      className="w-full border-t border-white/10 bg-white/5 backdrop-blur-xl p-10 mt-20 flex items-center justify-center"
+      className="w-full z-50 sticky border-t border-white/10 bg-white/5 backdrop-blur-xl p-10 mt-20 flex items-center justify-center"
     >
       <motion.div
         initial={{ opacity: 0, y: 10 }}

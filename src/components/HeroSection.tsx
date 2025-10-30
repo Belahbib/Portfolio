@@ -4,9 +4,7 @@ import { motion } from "framer-motion";
 import { EmojiIcon } from "./icons/emoji";
 
 export default function HeroSection() {
-  const emoji = <EmojiIcon width={28} height={28} />;
   const lines = [
-    // LINE 1: “Hey, I’m Achraf 😄”
     <div key="line1" className="flex items-center gap-2">
       <span>Hey, I’m</span>
       <span className="bg-gradient-to-b from-primary to-purple-900 bg-clip-text text-transparent flex items-center gap-2">
@@ -15,7 +13,6 @@ export default function HeroSection() {
       </span>
     </div>,
 
-    // LINE 2: “Full Stack Developer”
     <div key="line2">
       <span className="bg-gradient-to-b from-primary to-purple-900 bg-clip-text text-transparent">
         Full Stack
@@ -25,19 +22,19 @@ export default function HeroSection() {
   ];
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative xl:min-h-screen">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,28,135,0.5)_0%,rgba(0,0,0,0.9)_70%)]" />
 
       {/* Content */}
-      <div className="relative z-10 flex items-center justify-center h-screen text-white px-6">
-        <div className="flex items-center justify-center gap-10">
+      <div className="relative z-10 flex items-center justify-center h-screen text-white px-6 ">
+        <div className="lg:flex items-center justify-center gap-10">
           {/* Avatar */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="-mt-[150px] "
+            className="mt-0 m-auto  flex items-center justify-center xl:justify-start"
           >
             <Avatar
               src="images/logo.png"
@@ -45,20 +42,20 @@ export default function HeroSection() {
               round={true}
               size="200"
               textSizeRatio={2}
-              className="border border-gray-300 rounded-full"
+              className="border border-gray-300 rounded-full m-auto w-[200px] h-[200px]"
             />
           </motion.div>
 
           {/* Text section */}
-          <div className="flex flex-col items-start justify-center">
-            <h1 className="text-[4rem] font-bold leading-tight text-left tracking-wider text-sans space-y-2">
+          <div className="flex flex-col lg:items-start items-center justify-center">
+            <h1 className="xl:text-[4rem] lg:text-[3rem] md:text-4xl sm:text-2xl text-xl  font-bold xl:leading-tight xl:text-left text-center tracking-wider text-sans xl:space-y-2 mx-auto">
               {lines.map((line, i) => (
                 <motion.span
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.8, duration: 0.6 }}
-                  className="block"
+                  className="xl:block m-auto flex items-center justify-center lg:justify-start lg:item-center"
                 >
                   {line}
                 </motion.span>
@@ -66,7 +63,7 @@ export default function HeroSection() {
             </h1>
 
             <motion.p
-              className="mt-6 text-white max-w-3xl text-[20px]"
+              className="mt-6 text-white max-w-xl xl:text-[20px] lg:text-[16px] text-sm text-center lg:text-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: lines.length * 0.5 + 0.5 }}

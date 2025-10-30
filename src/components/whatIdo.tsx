@@ -1,30 +1,46 @@
 import { motion, useInView } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Skills } from "./icons/skills";
 
 export default function WhatIdo() {
   const ref = React.useRef<HTMLDivElement>(null);
   const isInView = useInView(ref!, { margin: "-300px" });
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth < 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1280;
 
   return (
     <div
       ref={ref}
-      className="w-screen h-screen flex items-center justify-center "
+      className="w-screen xl:h-screen flex items-center justify-center py-16 px-4 "
     >
-      <div className="max-w-6xl px-8 m-auto">
+      <div className="max-w-6xl xl:px-8  m-auto">
         <motion.div
           initial={{ y: 100, opacity: 0, scale: 0.8 }}
           animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ delay: 0.2, duration: 0.6 }}
           ref={ref}
         >
-          <div className="flex items-center mb-12 gap-16">
-            <Skills width={160} height={160} />
-            <h2 className="text-6xl font-bold  text-white border-l-2 text-sans p-6 tracking-wider ">
+          <div className="flex items-center  justify-center xl:justify-start  mb-12 xl:gap-16 gap-2">
+            <Skills
+              width={isDesktop ? 160 : 100}
+              height={isDesktop ? 160 : 100}
+            />
+            <h2 className="xl:text-6xl text-2xl font-bold  text-white border-l-2 text-sans p-6 tracking-wider ">
               What I can do{" "}
             </h2>
           </div>
-          <div className="text-[18px] text-gray-300 space-y-2 ml-6 grid grid-cols-2 gap-x-4 ">
+          <div className="xl:text-[18px] text-gray-300 space-y-2 xl:ml-6 grid  md:grid-cols-2 gap-x-4 ">
             <motion.div
               whileHover={{
                 scale: 1.05,
@@ -35,7 +51,7 @@ export default function WhatIdo() {
                 fontWeight: 600,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="border-2 p-8 bg-black/80 rounded-2xl text-white "
+              className="border-2 xl:p-8 p-4 bg-black/80 rounded-2xl text-white "
             >
               <p>
                 Collaborate & Solve Problems — I work closely with teams or
@@ -54,7 +70,7 @@ export default function WhatIdo() {
                 fontWeight: 600,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="border-2 p-8 bg-black/80 rounded-2xl"
+              className="border-2 xl:p-8 p-4 bg-black/80 rounded-2xl"
             >
               <p>
                 {" "}
@@ -73,7 +89,7 @@ export default function WhatIdo() {
                 fontWeight: 600,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="border-2 p-8 bg-black/80 rounded-2xl"
+              className="border-2 xl:p-8 p-4 bg-black/80 rounded-2xl"
             >
               <p>
                 Design Responsive & Intuitive UIs I create clean, accessible,
@@ -91,7 +107,7 @@ export default function WhatIdo() {
                 fontWeight: 600,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="border-2 p-8 bg-black/80 rounded-2xl"
+              className="border-2 xl:p-8 p-4 bg-black/80 rounded-2xl"
             >
               {" "}
               <p>
@@ -111,7 +127,7 @@ export default function WhatIdo() {
                 fontWeight: 600,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="border-2 p-6 bg-black/80 rounded-2xl"
+              className="border-2 xl:p-6 p-4 bg-black/80 rounded-2xl"
             >
               <p>
                 Deploy & Maintain Applications I handle deploymen t (using

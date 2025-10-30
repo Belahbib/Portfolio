@@ -2,8 +2,8 @@
 import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useScroll, useSpring } from "framer-motion";
 import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
 import Footer from "./Footer";
+import Sidebar from "./Socials";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -62,7 +62,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           }}
         />
         <motion.div
-          className="fixed top-0 left-0 w-full z-50  backdrop-blur-md"
+          className="fixed top-0 left-0 w-full z-30  backdrop-blur-md"
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}

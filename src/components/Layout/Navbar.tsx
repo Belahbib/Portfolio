@@ -3,10 +3,11 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 
+
 const Navbar = () => {
   return (
-    <div className="w-full  flex items-center justify-between py-4 border-b border-gray-700">
-      <div className="flex items-center gap-32 justify-between px-48 ">
+    <div className="flex z-40 items-center justify-between py-4 border-b border-gray-700">
+      <div className="flex items-center gap-32 justify-between xl:px-48 px-4  ">
         <div className="flex items-center space-x-8 ">
           <Link href="/">
             <div className="flex items-center gap-2">
@@ -17,13 +18,13 @@ const Navbar = () => {
                 alt="logo"
                 className="rounded-full"
               />
-              <h1 className="text-[24px] font-bold text-primary ">
+              <h1 className="xl:text-[24px]  font-bold text-primary ">
                 Belahbib.dev
               </h1>
             </div>
           </Link>
         </div>
-        <div className="flex items-center space-x-16">
+        <div className="hidden md:flex items-center space-x-16">
           <a href="/" className="text-white font-semibold hover:text-primary">
             Home
           </a>
@@ -61,6 +62,7 @@ const Navbar = () => {
             Contact
           </button>
         </div>
+        
       </div>
     </div>
   );

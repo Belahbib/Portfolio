@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import { Skills } from "@/components/icons/skills";
 import AppLayout from "@/components/Layout/Applayout";
 import HorizontalScrollSection from "@/components/Section";
+import SidebarVariants from "@/components/ui/SideBar";
 import WhatIdo from "@/components/whatIdo";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -16,10 +17,10 @@ export default function HomePage() {
 
   return (
     <AppLayout>
+      <SidebarVariants />
       <HeroSection />
-      {/* About section */}
       <About />
-      <WhatIdo />
+      <WhatIdo /> 
       <HorizontalScrollSection />
       <div className="h-screen flex items-center justify-center">
         <Contact />

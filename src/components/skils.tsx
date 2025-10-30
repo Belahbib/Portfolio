@@ -6,7 +6,8 @@ import { TechTag } from "./Helpers/techTags";
 export default function Skills() {
   const ref = React.useRef<HTMLDivElement>(null);
   const isInView = useInView(ref!, { margin: "-300px" });
-  const Programming = ["javascript", "typescript" , "node.js"];
+  const Programming = ["javascript", "typescript", "node.js"];
+  const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1280;
 
   const Frontend = [
     "react",
@@ -34,28 +35,25 @@ export default function Skills() {
   };
 
   return (
-    <div
-      ref={ref}
-      className="w-screen h-full flex z-40 p-16  m-auto"
-    >
-      <div className="max-w-6xl px-8 m-auto">
+    <div ref={ref} className="w-screen h-full flex z-40 xl:p-16  m-auto ">
+      <div className="max-w-6xl xl:px-8 m-auto">
         <motion.div
           initial={{ x: -100, opacity: 0.4 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <div className="flex items-center mb-12 gap-16">
+          <div className="flex items-center justify-center xl:justify-start mb-12 xl:gap-16">
             <Image
-              width={160}
-              height={160}
+              width={isDesktop ? 160 : 100}
+              height={isDesktop ? 160 : 100}
               alt="skills"
               src="/images/skill.png"
             />
-            <h2 className="text-6xl font-bold  text-white border-l-2 text-sans p-6 tracking-wider ">
+            <h2 className="xl:text-6xl text-3xl font-bold  text-white border-l-2 text-sans xl:p-6 p-2 tracking-wider">
               Hard Skills{" "}
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-y-10 text-gray-300 ml-6">
+          <div className="grid xl:grid-cols-2 gap-y-10 text-gray-300 ml-6">
             {/* === Programming === */}
             <div>
               <h1 className="text-[16px] text-gray-400 mb-6 font-semibold uppercase tracking-widest">
@@ -69,7 +67,7 @@ export default function Skills() {
               >
                 {Programming.map((tech) => (
                   <motion.div key={tech} variants={itemVariants}>
-                    <TechTag name={tech} size={68} />
+                    <TechTag name={tech} size={isDesktop ? 68 : 50} />
                   </motion.div>
                 ))}
               </motion.div>
@@ -88,7 +86,7 @@ export default function Skills() {
               >
                 {Frontend.map((tech) => (
                   <motion.div key={tech} variants={itemVariants}>
-                    <TechTag name={tech} size={68} />
+                    <TechTag name={tech} size={isDesktop ? 68 : 50} />
                   </motion.div>
                 ))}
               </motion.div>
@@ -107,7 +105,7 @@ export default function Skills() {
               >
                 {Backend.map((tech) => (
                   <motion.div key={tech} variants={itemVariants}>
-                    <TechTag name={tech} size={68} />
+                    <TechTag name={tech} size={isDesktop ? 68 : 50} />
                   </motion.div>
                 ))}
               </motion.div>
@@ -126,7 +124,7 @@ export default function Skills() {
               >
                 {Other.map((tech) => (
                   <motion.div key={tech} variants={itemVariants}>
-                    <TechTag name={tech} size={68} />
+                    <TechTag name={tech} size={isDesktop ? 68 : 50} />
                   </motion.div>
                 ))}
               </motion.div>

@@ -32,7 +32,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="fixed left-8 bottom-0 flex flex-col items-center gap-6 z-50">
+    <aside className="fixed md:left-8 left-1 bottom-0 flex flex-col items-center gap-6 z-50">
       <div className="flex flex-col items-center md:gap-5 gap-3 md:mb-6 mb-2">
         {SocialMedia.map((social) => {
           const Icon = social.icon;

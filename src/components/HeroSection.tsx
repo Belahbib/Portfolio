@@ -22,7 +22,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <div className="relative xl:min-h-screen">
+    <div id='home' className="relative xl:min-h-screen">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,28,135,0.5)_0%,rgba(0,0,0,0.9)_70%)]" />
 

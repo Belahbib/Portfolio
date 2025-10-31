@@ -123,7 +123,7 @@ export default function SidebarVariants() {
                 stiffness: 25,
                 damping: 10,
               }}
-              className="fixed top-1 left-0 right-0 bg-white h-[50%] rounded-2xl z-40"
+              className="fixed top-1 left-0 right-0 bg-white h-[50%] py-4 rounded-2xl z-40"
             />
 
             {/* Navigation Menu */}

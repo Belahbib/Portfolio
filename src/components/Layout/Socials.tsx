@@ -49,7 +49,7 @@ const Sidebar = () => {
           );
         })}
       </div>
-      <div className="w-[1px] md:h-24 h-8 bg-gray-400/50" />
+      <div className="w-px md:h-24 h-8 bg-gray-400/50" />
     </aside>
   );
 };

@@ -51,7 +51,7 @@ export function TechTag({ name, size = 28 }: TechTagProps) {
     "framer-motion": <FramerMotionIcon width={size} height={size} />,
     redux: <ReduxIcon width={size} height={size} />,
     "react-query": <ReactQueryIcon width={size} height={size} />,
-    'mongo.db': <MongoDbIcon width={size} height={size} />,
+    "mongo.db": <MongoDbIcon width={size} height={size} />,
   };
   const key = name.toLowerCase();
   const icon = techIcons[key];
@@ -64,12 +64,12 @@ export function TechTag({ name, size = 28 }: TechTagProps) {
       transition={{ type: "spring", stiffness: 550, damping: 45 }}
       data-tooltip-id={`tooltip-${key}`}
       data-tooltip-content={name}
-      className="flex items-center justify-center border border-white/10 bg-white/5 p-1 rounded-full hover:bg-white/10 transition-all duration-300 cursor-default"
+      className="flex items-center justify-center border borderBox bg-white/5 p-1 rounded-full hover:bg-white/10 transition-all duration-300 cursor-default"
     >
       <div style={{ fontSize: size }}>{icon}</div>
       <Tooltip
         id={`tooltip-${key}`}
-        className="!bg-black !text-white  !rounded-md  capitalize"
+        className="bg-black! text-white!  rounded-md!  capitalize"
       />
     </motion.div>
   );

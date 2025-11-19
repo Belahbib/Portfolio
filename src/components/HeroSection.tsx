@@ -5,16 +5,16 @@ import { EmojiIcon } from "./icons/emoji";
 
 export default function HeroSection() {
   const lines = [
-    <div key="line1" className="flex items-center gap-2">
-      <span>Hey, I’m</span>
-      <span className="bg-gradient-to-b from-primary to-purple-900 bg-clip-text text-transparent flex items-center gap-2">
+    <div key="line1" className="flex items-center gap-2 text-foreground">
+      <span className="">Hey, I’m</span>
+      <span className="bg-linear-to-b from-primary to-purple-900 bg-clip-text text-transparent flex items-center gap-2">
         Achraf
         <EmojiIcon width={52} height={52} />
       </span>
     </div>,
 
-    <div key="line2">
-      <span className="bg-gradient-to-b from-primary to-purple-900 bg-clip-text text-transparent">
+    <div key="line2" className="text-foreground">
+      <span className="bg-linear-to-b from-primary to-purple-900 bg-clip-text text-transparent">
         Full Stack
       </span>{" "}
       Developer
@@ -22,9 +22,12 @@ export default function HeroSection() {
   ];
 
   return (
-    <div id='home' className="relative xl:min-h-screen">
+    <div id="home" className="relative xl:min-h-screen">
       {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,28,135,0.5)_0%,rgba(0,0,0,0.9)_70%)]" />
+      <div
+        className="absolute inset-0 "
+        style={{ background: "var(--gradient-bg)" }}
+      />
 
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center h-screen text-white px-6 ">
@@ -42,7 +45,7 @@ export default function HeroSection() {
               round={true}
               size="200"
               textSizeRatio={2}
-              className="border border-gray-300 rounded-full m-auto w-[200px] h-[200px]"
+              className="border dark:border-gray-300 border-gray-900 rounded-full m-auto w-[200px] h-[200px]"
             />
           </motion.div>
 
@@ -63,7 +66,7 @@ export default function HeroSection() {
             </h1>
 
             <motion.p
-              className="mt-6 text-white max-w-xl xl:text-[20px] lg:text-[16px] text-sm text-center lg:text-start"
+              className="mt-6 text-foreground max-w-xl xl:text-[20px] lg:text-[16px] text-sm text-center lg:text-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: lines.length * 0.5 + 0.5 }}
@@ -79,7 +82,7 @@ export default function HeroSection() {
               transition={{ delay: lines.length * 0.5 + 1 }}
               className="mt-6 px-6 py-3 bg-black text-white font-semibold rounded-md hover:bg-purple-600 transition-colors duration-300"
               onClick={() => {
-                const section = document.querySelector("section");
+                const section = document.getElementById("project");
                 if (section) {
                   section.scrollIntoView({ behavior: "smooth" });
                 }

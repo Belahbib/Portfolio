@@ -9,11 +9,13 @@ import { HomeIcon } from "../icons/home";
 import { AboutIcon } from "../icons/about";
 import { ProjectIcon } from "../icons/project";
 import { ContactIcon } from "../icons/contact";
+import { label } from "framer-motion/client";
+import { SkillsIcon } from "../icons/skills";
 
 export default function SidebarVariants() {
   const [isOpen, setIsOpen] = useState(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
-  const [active, setActive] = useState<string>("home"); // ✅ track active section
+  const [active, setActive] = useState<string>("home");
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   useLayoutEffect(() => {
@@ -29,7 +31,8 @@ export default function SidebarVariants() {
   const links = [
     { label: "Home", id: "home", icon: HomeIcon },
     { label: "About", id: "BioGraphy", icon: AboutIcon },
-    { label: "Projects", id: "horizontal-section", icon: ProjectIcon },
+    { label: "Projects", id: "project", icon: ProjectIcon },
+    { label: "Skills", id: "skills", icon: SkillsIcon },
     { label: "Contact", id: "contact", icon: ContactIcon },
   ];
 
@@ -43,9 +46,11 @@ export default function SidebarVariants() {
         });
       },
       {
-        threshold: 0.4, // section visible by 40%
+        threshold: 0.4,
       }
     );
+
+    
 
     links.forEach((link) => {
       const el = document.getElementById(link.id);
@@ -60,6 +65,8 @@ export default function SidebarVariants() {
     };
   }, []);
 
+  console.log(active);
+
   const scrollTo = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
@@ -69,14 +76,14 @@ export default function SidebarVariants() {
   };
 
   return (
-    <div className="md:hidden z-50 overflow-visible fixed">
+    <div className="md:hidden z-50 overflow-visible sticky">
       {/* === Toggle Button === */}
       <motion.button
         ref={toggleRef}
         onClick={() => setIsOpen(!isOpen)}
         animate={{ rotate: isOpen ? 180 : 0 }}
         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-        className="fixed top-2 right-2 z-50 bg-white p-2 rounded-full transition-transform hover:scale-105"
+        className="fixed top-3 right-2 z-50 bg-foreground p-2 rounded-full transition-transform hover:scale-105"
       >
         <motion.div
           key={isOpen ? "cross" : "menu"}
@@ -86,9 +93,9 @@ export default function SidebarVariants() {
           transition={{ duration: 0.3 }}
         >
           {isOpen ? (
-            <Cross className="w-6 h-6" />
+            <Cross width={22} height={22} className="w-6 h-6" />
           ) : (
-            <ToggleMenu className="w-6 h-6" />
+            <ToggleMenu width={22} height={22} className="w-6 h-6" />
           )}
         </motion.div>
       </motion.button>
@@ -123,7 +130,7 @@ export default function SidebarVariants() {
                 stiffness: 25,
                 damping: 10,
               }}
-              className="fixed top-1 left-0 right-0 bg-white h-[60%] py-4 rounded-2xl z-40"
+              className="fixed top-1 left-0 right-0 bg-foreground h-[60%] py-4 rounded-2xl z-40"
             />
 
             {/* Navigation Menu */}
@@ -155,17 +162,19 @@ export default function SidebarVariants() {
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
                   className={`transition-all text-center py-1 px-8 w-full flex gap-4 items-center rounded-xl ${
-                    active === link.id ? "bg-gray-200" : "hover:bg-gray-100"
+                    active === link.id
+                      ? "bg-gray-200 text-black!"
+                      : "hover:bg-gray-100"
                   }`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 + 0.4 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <span className="my-auto border-2 border-gray-200 rounded-full p-1 w-fit h-fit">
+                  <span className="my-auto border border-gray-200 rounded-full p-1 w-fit h-fit">
                     <link.icon />
                   </span>
-                  <span className="border p-2 border-gray-200 rounded-xl my-auto w-[6rem]">
+                  <span className="border p-2 border-gray-200 rounded-xl my-auto w-24  text-background">
                     {link.label}
                   </span>
                 </motion.button>

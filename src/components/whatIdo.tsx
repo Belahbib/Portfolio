@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { Skills } from "./icons/skills";
+import {  SkillsIcon } from "./icons/skills";
 import { useTailwindBreakpoints } from "./hooks/breakPoint";
 
 export default function WhatIdo() {
@@ -24,11 +24,11 @@ export default function WhatIdo() {
           ref={ref}
         >
           <div className="flex items-center  justify-center xl:justify-start  mb-12 xl:gap-16 gap-2">
-            <Skills
+            <SkillsIcon
               width={isDesktop ? 160 : 100}
               height={isDesktop ? 160 : 100}
             />
-            <h2 className="xl:text-6xl text-2xl font-bold  text-white border-l-2 text-sans p-6 tracking-wider ">
+            <h2 className="xl:text-6xl text-2xl font-bold  text-[var(--foreground)] border-l-2 text-sans p-6 tracking-wider ">
               What I can do{" "}
             </h2>
           </div>

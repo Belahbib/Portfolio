@@ -14,7 +14,7 @@ export default function About() {
   const size = sm ? 120 : md ? 150 : lg ? 180 : xl ? 200 : xxl ? 200 : 200;
 
   const infos = [
-    { title: "AGE", value: "24 years old" },
+    { title: "AGE", value: "25 years old" },
     { title: "LOCATION", value: "Morocco, Agadir" },
     {
       title: "EDUCATION",
@@ -32,11 +32,11 @@ export default function About() {
   return (
     <div
       ref={ref}
-      className="relative xl:min-h-screen flex m-auto items-center justify-center text-white max-w-7xl"
+      className="relative xl:min-h-screen flex m-auto items-center justify-center text-[var(--foreground)]"
       id="BioGraphy"
     >
       <div className="flex justify-center flex-col items-center xl:border-1 border-gray-900 rounded-2xl xl:p-32 max-w-7xl">
-        <div className="px-0 sm:px-4 text-white">
+        <div className="px-0 sm:px-4 ">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -82,7 +82,7 @@ export default function About() {
               >
                 {/* Connector Line + Text */}
                 <div className="relative flex  items-center ml-[92px] md:ml-[3rem] lg:ml-[1.3rem] xl:ml-0 xxl:ml-32 ">
-                  <span className="absolute xl:right-[8.5rem] right-[3.5rem] z-30 w-[12px] h-[12px] rounded-full bg-gradient-to-b from-primary to-[#ff0088] shadow-[0_0_6px_rgba(255,0,136,0.6)]" />
+                  <span className="absolute xl:right-[8.5rem] right-[3.5rem] z-30 w-[12px] h-[12px] rounded-full bg-gradient-to-b from-primary to-[#ff0088] " />
                   <span className="absolute right-full ml-[4rem] xl:w-[9rem] w-[4rem] h-[0.5px] bg-gradient-to-r from-primary to-[#ff0088] rounded-r-full z-10" />
                 </div>
 
@@ -101,7 +101,7 @@ export default function About() {
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-gray-300 lg:text-[18px] text-[12px] w-full">
+                    <p className=" lg:text-[18px] text-[12px] w-full">
                       {item.value}
                     </p>
                   )}

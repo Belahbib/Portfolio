@@ -1,3 +1,4 @@
+import { useTheme } from "next-themes";
 import React from "react";
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export function Dev({ className, width = 28, height = 28 , fill = "#ae85ef" }: Props) {
+  const {theme} = useTheme();
   return (
     <svg
       width={width}
@@ -19,12 +21,12 @@ export function Dev({ className, width = 28, height = 28 , fill = "#ae85ef" }: P
     >
       <path
         d="M4.5 8.33337C4.5 7.2288 5.39543 6.33337 6.5 6.33337H29.5C30.6046 6.33337 31.5 7.2288 31.5 8.33337V23.75H4.5V8.33337Z"
-        fill={fill}
-        fillOpacity="0.24"
+        fill={theme === "dark" ? "#ae85ef" : "#7d3fe0"}
+        fillOpacity={theme === "dark" ? "0.25" : "0.5"}
       />
       <path
         d="M7 26.3334C7 25.7811 7.44772 25.3334 8 25.3334H28C28.5523 25.3334 29 25.7811 29 26.3334V28.0834C29 29.1879 28.1046 30.0834 27 30.0834H9C7.89543 30.0834 7 29.1879 7 28.0834V26.3334Z"
-        fill={fill}
+        fill={theme === "dark" ? "#ae85ef" : "#7d3fe0"}
       />
       <path
         d="M20.6667 12.0834L23.3333 15L20.6667 17.9167"

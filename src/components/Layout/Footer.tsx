@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer
       ref={ref}
-      className="w-full z-50 sticky border-t border-white/10 bg-white/5 backdrop-blur-xl p-10 mt-20 flex items-center justify-center"
+      className="w-full z-50 sticky border-t borderBox bg-white/5 backdrop-blur-xl p-10 mt-20 flex items-center justify-center"
     >
       <motion.div
         initial={{ opacity: 0, y: 10 }}
@@ -18,7 +18,7 @@ export default function Footer() {
       >
         <p>
           © {new Date().getFullYear()}{" "}
-          <span className="text-white font-semibold">Achraf Belahbib</span>. All
+          <span className="text-paragraph font-semibold">Belahbib.dev</span>. All rights
           rights reserved.
         </p>
       </motion.div>

@@ -36,6 +36,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [mouseX, mouseY, bubbleX, bubbleY]);
 
+  const isDesktop = typeof window !== "undefined" && window.innerWidth >= 770;
+
   return (
     <>
       <motion.div
@@ -51,14 +53,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           zIndex: 100,
         }}
       />
-      <div className="relative min-h-screen bg-black">
+      <div className="relative min-h-screen bg-background]">
         <motion.div
-          className="fixed w-20 h-20 bg-[#ff0088] rounded-full mix-blend-screen pointer-events-none opacity-30 z-40"
+          className="fixed w-20 h-20 mouse rounded-full mix-blend-normal pointer-events-none opacity-30 z-100"
           style={{
             x: smoothBubbleX,
             y: smoothBubbleY,
             translateX: "-50%",
             translateY: "-50%",
+            display: isDesktop ? "block" : "none",
           }}
         />
         <motion.div

@@ -1,3 +1,4 @@
+import { useTheme } from "next-themes";
 import React from "react";
 
 interface Props {
@@ -7,12 +8,13 @@ interface Props {
   fill?: string;
 }
 
-export function Skills({
+export function SkillsIcon({
   className,
   width = 28,
   height = 28,
   fill = "#ae85ef",
 }: Props) {
+  const { theme } = useTheme();
   return (
     <svg
       width={width}
@@ -28,7 +30,7 @@ export function Skills({
         width="17"
         height="14"
         rx="2"
-        stroke="#ffffff"
+        stroke={theme === "dark" ? "#ffffff" : "#000000"}
         strokeWidth="0.5"
       />
       <path
@@ -38,12 +40,7 @@ export function Skills({
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path
-        d="M10 10H14"
-        stroke={fill}
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
+      <path d="M10 10H14" stroke={fill} strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }

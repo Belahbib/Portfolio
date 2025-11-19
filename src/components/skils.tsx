@@ -6,7 +6,7 @@ import { useTailwindBreakpoints } from "./hooks/breakPoint";
 
 export default function Skills() {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { sm, md, lg, xl, xxl } = useTailwindBreakpoints();
+  const { sm, md, lg } = useTailwindBreakpoints();
   const margin = sm ? "-100px" : md ? "-300px" : lg ? "-300px" : "-300px";
   const isInView = useInView(ref!, { margin: margin });
   const Programming = ["javascript", "typescript", "node.js"];
@@ -38,7 +38,7 @@ export default function Skills() {
   };
 
   return (
-    <div ref={ref} className="w-screen h-full flex z-40 xl:p-16  m-auto ">
+    <div id="skills" ref={ref} className="w-screen h-full flex z-10 xl:p-16  m-auto ">
       <div className="max-w-6xl xl:px-8 m-auto">
         <motion.div
           initial={{ x: -100, opacity: 0.4 }}
@@ -52,7 +52,7 @@ export default function Skills() {
               alt="skills"
               src="/images/skill.png"
             />
-            <h2 className="xl:text-6xl text-3xl font-bold  text-white border-l-2 text-sans xl:p-6 p-2 tracking-wider">
+            <h2 className="xl:text-6xl text-3xl font-bold  text-foreground border-l-2 text-sans xl:p-6 p-2 tracking-wider">
               Hard Skills{" "}
             </h2>
           </div>

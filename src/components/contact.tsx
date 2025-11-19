@@ -3,14 +3,14 @@
 import { motion, useInView } from "framer-motion";
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
+import { toast } from "sonner";
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { margin: "-200px" });
+
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<
-    "idle" | "success" | "error" | "sending"
-  >("idle");
+  const [sending, setSending] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -20,7 +20,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("sending");
+    setSending(true);
 
     try {
       await emailjs.send(
@@ -29,11 +29,15 @@ export default function Contact() {
         form,
         "WkniAmxoZsXY1Tkcp"
       );
-      setStatus("success");
+
+      toast.success("Message sent successfully!");
+
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
       console.error(error);
-      setStatus("error");
+      toast.error("Something went wrong. Try again! ❌");
+    } finally {
+      setSending(false);
     }
   };
 
@@ -50,15 +54,17 @@ export default function Contact() {
         className="max-w-2xl w-full text-center"
       >
         {/* Heading */}
-        <h2 className="text-5xl font-bold text-white mb-4 text-sans tracking-wider">Get in Touch</h2>
-        <p className="text-gray-400 mb-10 text-lg">
+        <h2 className="xl:text-6xl text-3xl  font-bold mb-4 text-foreground tracking-wider text-sans">
+          Get in Touch
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400 mb-10 text-lg">
           Have a project or collaboration in mind? Let’s talk!
         </p>
 
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-5 bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-xl"
+          className="flex flex-col gap-5 bg-white/5 dark:bg-white/10 border borderBox rounded-2xl p-8 backdrop-blur-xl"
         >
           <input
             type="text"
@@ -67,7 +73,7 @@ export default function Contact() {
             value={form.name}
             onChange={handleChange}
             required
-            className="bg-transparent border border-white/20 text-white placeholder-gray-400 rounded-lg px-4 py-3 focus:outline-none focus:border-white/40 transition-all"
+            className="bg-transparent border borderBox text-paragraph placeholder-gray-400 rounded-lg px-4 py-3 focus:outline-none focus:border-paragraph/40 transition-all"
           />
 
           <input
@@ -77,7 +83,7 @@ export default function Contact() {
             value={form.email}
             onChange={handleChange}
             required
-            className="bg-transparent border border-white/20 text-white placeholder-gray-400 rounded-lg px-4 py-3 focus:outline-none focus:border-white/40 transition-all"
+            className="bg-transparent border borderBox text-paragraph placeholder-gray-400 rounded-lg px-4 py-3 focus:outline-none focus:border-paragraph/40 transition-all"
           />
 
           <textarea
@@ -87,27 +93,17 @@ export default function Contact() {
             onChange={handleChange}
             required
             rows={5}
-            className="bg-transparent border border-white/20 text-white placeholder-gray-400 rounded-lg px-4 py-3 focus:outline-none focus:border-white/40 transition-all"
+            className="bg-transparent border borderBox text-paragraph placeholder-gray-400 rounded-lg px-4 py-3 focus:outline-none focus:border-paragraph/40 transition-all"
           />
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            disabled={status === "sending"}
-            className="bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg py-3 transition-colors duration-300"
+            disabled={sending}
+            className="bg-primary hover:bg-purple-700 text-white font-semibold rounded-lg py-3 transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {status === "sending" ? "Sending..." : "Send Message"}
+            {sending ? "Sending..." : "Send Message"}
           </motion.button>
-
-          {/* Status messages */}
-          {status === "success" && (
-            <p className="text-green-400 mt-3">✅ Message sent successfully!</p>
-          )}
-          {status === "error" && (
-            <p className="text-red-400 mt-3">
-              ❌ Something went wrong. Try again.
-            </p>
-          )}
         </form>
       </motion.div>
     </section>

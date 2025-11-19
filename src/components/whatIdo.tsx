@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import {  SkillsIcon } from "./icons/skills";
+import { SkillsIcon } from "./icons/skills";
 import { useTailwindBreakpoints } from "./hooks/breakPoint";
 
 export default function WhatIdo() {
@@ -28,7 +28,7 @@ export default function WhatIdo() {
               width={isDesktop ? 160 : 100}
               height={isDesktop ? 160 : 100}
             />
-            <h2 className="xl:text-6xl text-2xl font-bold  text-[var(--foreground)] border-l-2 text-sans p-6 tracking-wider ">
+            <h2 className="xl:text-6xl text-2xl font-bold  text-foreground border-l-2 text-sans p-6 tracking-wider ">
               What I can do{" "}
             </h2>
           </div>

@@ -38,7 +38,11 @@ export default function Skills() {
   };
 
   return (
-    <div id="skills" ref={ref} className="w-screen h-full flex z-10 xl:p-16  m-auto ">
+    <div
+      id="skills"
+      ref={ref}
+      className="w-screen h-full flex z-10 xl:p-16  m-auto "
+    >
       <div className="max-w-6xl xl:px-8 m-auto">
         <motion.div
           initial={{ x: -100, opacity: 0.4 }}

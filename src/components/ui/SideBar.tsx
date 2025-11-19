@@ -9,14 +9,15 @@ import { HomeIcon } from "../icons/home";
 import { AboutIcon } from "../icons/about";
 import { ProjectIcon } from "../icons/project";
 import { ContactIcon } from "../icons/contact";
-import { label } from "framer-motion/client";
-import { SkillsIcon } from "../icons/skills";
+import { SkillIcon } from "../icons/skill";
 
 export default function SidebarVariants() {
   const [isOpen, setIsOpen] = useState(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [active, setActive] = useState<string>("home");
   const toggleRef = useRef<HTMLButtonElement>(null);
+
+  const NAVBAR_OFFSET = 90;
 
   useLayoutEffect(() => {
     if (toggleRef.current) {
@@ -32,7 +33,7 @@ export default function SidebarVariants() {
     { label: "Home", id: "home", icon: HomeIcon },
     { label: "About", id: "BioGraphy", icon: AboutIcon },
     { label: "Projects", id: "project", icon: ProjectIcon },
-    { label: "Skills", id: "skills", icon: SkillsIcon },
+    { label: "Skills", id: "skills", icon: SkillIcon },
     { label: "Contact", id: "contact", icon: ContactIcon },
   ];
 
@@ -46,11 +47,10 @@ export default function SidebarVariants() {
         });
       },
       {
-        threshold: 0.4,
+        rootMargin: "-50% 0px -50% 0px",
+        threshold: 0,
       }
     );
-
-    
 
     links.forEach((link) => {
       const el = document.getElementById(link.id);
@@ -67,12 +67,36 @@ export default function SidebarVariants() {
 
   console.log(active);
 
+  useEffect(() => {
+    const handler = () => setActive("project");
+    window.addEventListener("project-active", handler);
+
+    return () => window.removeEventListener("project-active", handler);
+  }, []);
+
+  // const scrollToV2 = (id: string) => {
+  //   const el = document.getElementById(id);
+  //   if (el) {
+  //     window.scrollTo({
+  //       top: el.offsetTop - NAVBAR_OFFSET,
+  //       behavior: "smooth",
+  //     });
+  //     setIsOpen(false);
+  //   }
+  // };
+
   const scrollTo = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const top = el.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET;
+
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+
+    setIsOpen(false);
   };
 
   return (
@@ -161,20 +185,20 @@ export default function SidebarVariants() {
                 <motion.button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`transition-all text-center py-1 px-8 w-full flex gap-4 items-center rounded-xl ${
-                    active === link.id
-                      ? "bg-gray-200 text-black!"
-                      : "hover:bg-gray-100"
-                  }`}
+                  className={`transition-all text-center py-1 px-8 w-full flex gap-4 items-center rounded-xl`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 + 0.4 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <span className="my-auto border border-gray-200 rounded-full p-1 w-fit h-fit">
-                    <link.icon />
+                  <span
+                    className={`my-auto border border-gray-200 rounded-full p-1 w-fit h-fit ${
+                      active === link.id ? "bgBox" : "hover:bg-gray-100"
+                    }`}
+                  >
+                    <link.icon active={active === link.id} />
                   </span>
-                  <span className="border p-2 border-gray-200 rounded-xl my-auto w-24  text-background">
+                  <span className="border p-2 border-gray-200 rounded-xl my-auto w-24  text-background ">
                     {link.label}
                   </span>
                 </motion.button>

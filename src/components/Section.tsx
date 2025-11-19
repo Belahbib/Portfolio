@@ -82,6 +82,16 @@ export default function HorizontalScrollSection() {
 
   const mbfTech = ["react", "next.js", "typescript"];
 
+  useEffect(() => {
+    const unsub = scrollYProgress.on("change", (v) => {
+      if (v > 0 && v < 1) {
+        window.dispatchEvent(new CustomEvent("project-active"));
+      }
+    });
+
+    return () => unsub();
+  }, []);
+
   return (
     <section
       // id="horizontal-section"

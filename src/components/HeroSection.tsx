@@ -2,11 +2,14 @@ import React from "react";
 import Avatar from "react-avatar";
 import { motion } from "framer-motion";
 import { EmojiIcon } from "./icons/emoji";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function HeroSection() {
+  const t = useTranslations();
+  const locale = useLocale();
   const lines = [
     <div key="line1" className="flex items-center gap-2 text-foreground">
-      <span className="">Hey, I’m</span>
+      <span className="">{t("hey")}</span>
       <span className="bg-linear-to-b from-primary to-purple-900 bg-clip-text text-transparent flex items-center gap-2">
         Achraf
         <EmojiIcon width={52} height={52} />
@@ -17,7 +20,7 @@ export default function HeroSection() {
       <span className="bg-linear-to-b from-primary to-purple-900 bg-clip-text text-transparent">
         Full Stack
       </span>{" "}
-      Developer
+      {t("Developer")}
     </div>,
   ];
 
@@ -66,14 +69,14 @@ export default function HeroSection() {
             </h1>
 
             <motion.p
-              className="mt-6 text-foreground max-w-xl xl:text-[20px] lg:text-[16px] text-sm text-center lg:text-start"
+              className={`mt-6 text-foreground ${
+                locale === "fr" ? "max-w-4xl" : "max-w-xl"
+              }  xl:text-[20px] lg:text-[16px] text-sm text-center lg:text-start`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: lines.length * 0.5 + 0.5 }}
             >
-              I breathe life into ideas by building web experiences that are
-              smooth, smart, and human-centered. For me, great development isn’t
-              just about making things work—it’s about making them feel right.
+              {t("description")}
             </motion.p>
 
             <motion.button
@@ -88,7 +91,7 @@ export default function HeroSection() {
                 }
               }}
             >
-              View My Work
+              {t("view_work")}
             </motion.button>
           </div>
         </div>

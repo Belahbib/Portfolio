@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { SkillsIcon } from "./icons/skills";
 import { useTailwindBreakpoints } from "./hooks/breakPoint";
+import { useTranslations } from "next-intl";
 
 export default function WhatIdo() {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -10,7 +11,7 @@ export default function WhatIdo() {
   const isInView = useInView(ref!, { margin: margin });
 
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1280;
-
+  const t = useTranslations();
   return (
     <div
       ref={ref}
@@ -29,7 +30,7 @@ export default function WhatIdo() {
               height={isDesktop ? 160 : 100}
             />
             <h2 className="xl:text-6xl text-2xl font-bold  text-foreground border-l-2 text-sans p-6 tracking-wider ">
-              What I can do{" "}
+              {t("What I can do")}{" "}
             </h2>
           </div>
           <div className="xl:text-[18px] text-gray-300 space-y-2 xl:ml-6 grid  md:grid-cols-2 gap-x-4 ">
@@ -45,11 +46,7 @@ export default function WhatIdo() {
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
               className="border-2 xl:p-8 p-4 bg-black/80 rounded-2xl text-white "
             >
-              <p>
-                Collaborate & Solve Problems — I work closely with teams or
-                clients to turn ideas into functional, maintainable software—on
-                time and with purpose.
-              </p>
+              <p>{t("SolveProblems")}</p>
             </motion.div>
 
             <motion.div
@@ -64,12 +61,7 @@ export default function WhatIdo() {
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
               className="border-2 xl:p-8 p-4 bg-black/80 rounded-2xl"
             >
-              <p>
-                {" "}
-                Build Full Web Applications From dynamic frontends with React to
-                scalable backends with Node.js, I develop complete,
-                production-ready web apps.
-              </p>
+              <p> {t("BuildApps")}</p>
             </motion.div>
             <motion.div
               whileHover={{
@@ -83,11 +75,7 @@ export default function WhatIdo() {
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
               className="border-2 xl:p-8 p-4 bg-black/80 rounded-2xl"
             >
-              <p>
-                Design Responsive & Intuitive UIs I create clean, accessible,
-                and mobile-first user interfaces that deliver seamless
-                experiences across devices. <br />
-              </p>
+              <p>{t("DesignResponsive")}</p>
             </motion.div>
             <motion.div
               whileHover={{
@@ -101,13 +89,7 @@ export default function WhatIdo() {
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
               className="border-2 xl:p-8 p-4 bg-black/80 rounded-2xl"
             >
-              {" "}
-              <p>
-                {" "}
-                Architect & Manage Databases Whether it’s structured data in
-                PostgreSQL/MySQL or flexible schemas in MongoDB, I design
-                efficient data models and APIs.
-              </p>
+              <p> {t("Architect")}</p>
             </motion.div>
             <motion.div
               whileHover={{
@@ -121,11 +103,7 @@ export default function WhatIdo() {
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
               className="border-2 xl:p-6 p-4 bg-black/80 rounded-2xl"
             >
-              <p>
-                Deploy & Maintain Applications I handle deploymen t (using
-                platforms like Vercel, Render, or AWS), CI/CD setup, and
-                performance optimization for reliability and speed.
-              </p>
+              <p>{t("Deploy")}</p>
             </motion.div>
           </div>
         </motion.div>

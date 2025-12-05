@@ -10,6 +10,7 @@ import { AboutIcon } from "../icons/about";
 import { ProjectIcon } from "../icons/project";
 import { ContactIcon } from "../icons/contact";
 import { SkillIcon } from "../icons/skill";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function SidebarVariants() {
   const [isOpen, setIsOpen] = useState(false);
@@ -167,17 +168,22 @@ export default function SidebarVariants() {
               className="fixed top-0 right-0 left-0 z-40 flex flex-col items-start justify-start space-y-4 text-black text-lg font-semibold py-5"
             >
               <Link href="/">
-                <div className="flex items-center gap-2 mb-8 px-8">
-                  <Image
-                    src="/images/belahbib.png"
-                    width={32}
-                    height={32}
-                    alt="logo"
-                    className="rounded-full"
-                  />
-                  <h1 className="xl:text-[24px] font-bold text-primary">
-                    Belahbib.dev
-                  </h1>
+                <div className="flex gap-20">
+                  <div className="flex items-center gap-2 mb-8 px-8">
+                    <Image
+                      src="/images/belahbib.png"
+                      width={32}
+                      height={32}
+                      alt="logo"
+                      className="rounded-full"
+                    />
+                    <h1 className="xl:text-[24px] font-bold text-primary">
+                      Belahbib.dev
+                    </h1>
+                  </div>
+                  <div className="-mt-1">
+                    <LanguageSwitcher />
+                  </div>
                 </div>
               </Link>
 

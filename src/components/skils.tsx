@@ -1,8 +1,10 @@
 import { motion, useInView } from "framer-motion";
 import React from "react";
 import Image from "next/image";
-import { TechTag } from "./Helpers/techTags";
+
 import { useTailwindBreakpoints } from "./hooks/breakPoint";
+import { TechTag } from "@/Helpers/techTags";
+import { useTranslations } from "next-intl";
 
 export default function Skills() {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -11,6 +13,7 @@ export default function Skills() {
   const isInView = useInView(ref!, { margin: margin });
   const Programming = ["javascript", "typescript", "node.js"];
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1280;
+  const t = useTranslations();
 
   const Frontend = [
     "react",
@@ -57,7 +60,7 @@ export default function Skills() {
               src="/images/skill.png"
             />
             <h2 className="xl:text-6xl text-3xl font-bold  text-foreground border-l-2 text-sans xl:p-6 p-2 tracking-wider">
-              Hard Skills{" "}
+              {t("HardSkills")}{" "}
             </h2>
           </div>
           <div className="grid xl:grid-cols-2 gap-y-10 text-gray-300 ml-6">

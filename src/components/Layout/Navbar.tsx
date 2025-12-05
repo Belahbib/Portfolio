@@ -5,8 +5,11 @@ import React from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
+import { useTranslations } from "next-intl";
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
+  const t = useTranslations();
 
   return (
     <div className="flex z-40 items-center justify-between py-4 border-b borderBox w-full">
@@ -33,7 +36,7 @@ const Navbar = () => {
           {/* === NAV LINKS === */}
           <div className="hidden md:flex items-center space-x-10 text-foreground]">
             <a href="/" className="font-semibold hover:text-primary transition">
-              Home
+              {t("Home")}
             </a>
             <button
               onClick={() => {
@@ -42,7 +45,7 @@ const Navbar = () => {
               }}
               className="font-semibold hover:text-primary transition"
             >
-              About
+              {t("About")}
             </button>
             <button
               onClick={() => {
@@ -51,7 +54,7 @@ const Navbar = () => {
               }}
               className="font-semibold hover:text-primary transition"
             >
-              Projects
+              {t("Projects")}
             </button>
             <button
               onClick={() => {
@@ -60,13 +63,16 @@ const Navbar = () => {
               }}
               className="font-semibold hover:text-primary transition"
             >
-              Contact
+              {t("Contact")}
             </button>
           </div>
         </div>
 
+        {/* === Language Swither === */}
+
         {/* === DARK / LIGHT TOGGLE === */}
-        <div className="md:block md:right-2 fixed right-16">
+
+        <div className="md:flex gap-3.5 md:right-2  fixed right-16">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="p-2 rounded-full border borderBox hover:bg-gray-200 dark:hover:bg-gray-800 transition"
@@ -78,6 +84,10 @@ const Navbar = () => {
               <Moon className="w-5 h-5 text-black " />
             )}
           </button>
+          <div className=" hidden md:block">
+            {" "}
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </div>

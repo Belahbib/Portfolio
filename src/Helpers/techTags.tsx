@@ -1,26 +1,26 @@
 "use client";
 
+import { ExpressJsIcon } from "@/components/icons/expressJs";
+import { FramerMotionIcon } from "@/components/icons/framerMotion";
+import { GitIcon } from "@/components/icons/git";
+import { GitLabIcon } from "@/components/icons/gitlab";
+import { I18nextIcon } from "@/components/icons/i18next";
+import { JavascriptIcon } from "@/components/icons/javascript";
+import { MongoDbIcon } from "@/components/icons/mongo";
+import { NestJsIcon } from "@/components/icons/nestJs";
+import { NextJsIcon } from "@/components/icons/nextJs";
+import { NodeJsIcon } from "@/components/icons/nodeJs";
+import { PlaywrightIcon } from "@/components/icons/playwright";
+import { PostgresIcon } from "@/components/icons/postgres";
+import { ReactIcon } from "@/components/icons/react";
+import { ReactQueryIcon } from "@/components/icons/reactQuery";
+import { ReduxIcon } from "@/components/icons/redux";
+import { TailwindcssIcon } from "@/components/icons/tailwind";
+import { TypescriptIcon } from "@/components/icons/typescript";
 import { motion } from "framer-motion";
 import { ReactElement } from "react";
 
 import { Tooltip } from "react-tooltip";
-import { ReactIcon } from "../icons/react";
-import { NextJsIcon } from "../icons/nextJs";
-import { TailwindcssIcon } from "../icons/tailwind";
-import { TypescriptIcon } from "../icons/typescript";
-import { NodeJsIcon } from "../icons/nodeJs";
-import { PostgresIcon } from "../icons/postgres";
-import { JavascriptIcon } from "../icons/javascript";
-import { NestJsIcon } from "../icons/nestJs";
-import { ExpressJsIcon } from "../icons/expressJs";
-import { GitIcon } from "../icons/git";
-import { GitLabIcon } from "../icons/gitlab";
-import { I18nextIcon } from "../icons/i18next";
-import { PlaywrightIcon } from "../icons/playwright";
-import { FramerMotionIcon } from "../icons/framerMotion";
-import { ReduxIcon } from "../icons/redux";
-import { ReactQueryIcon } from "../icons/reactQuery";
-import { MongoDbIcon } from "../icons/mongo";
 
 interface TechTagProps {
   name: string;

@@ -13,13 +13,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { LightVenez } from "./icons/lightVenez";
 import { ArrowRight } from "./icons/arrowRight";
-import { TechTag } from "./Helpers/techTags";
+
 import { ZylopaIcon } from "./icons/zylopay";
 import { MbfIcon } from "./icons/mbf";
 import Skills from "./skils";
 import { useTailwindBreakpoints } from "./hooks/breakPoint";
 import { useTheme } from "next-themes";
 import { DarkVenez } from "./icons/darkVenez";
+import { TechTag } from "@/Helpers/techTags";
+import { useTranslations } from "next-intl";
 
 export default function HorizontalScrollSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -32,6 +34,7 @@ export default function HorizontalScrollSection() {
   const projetsInView2 = useInView(projetsRef2, { margin: margin });
   const projetsInView3 = useInView(projetsRef3, { margin: margin });
   const { theme } = useTheme();
+  const translate = useTranslations();
 
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1280;
 
@@ -92,6 +95,7 @@ export default function HorizontalScrollSection() {
     return () => unsub();
   }, []);
 
+
   return (
     <section
       // id="horizontal-section"
@@ -137,19 +141,14 @@ export default function HorizontalScrollSection() {
                     </div>
 
                     <h2 className="text-xl sm:text-2xl font-bold text-foreground mt-4">
-                      Venez Website | Admin Dashboard
+                      {translate("Venez Website | Admin Dashboard")}
                     </h2>
 
                     <p className="text-paragraph text-sm sm:text-base mt-4">
-                      Venez.ma is a dynamic web platform designed to connect
-                      users with the best local experiences across Morocco—from
-                      hidden-gem cafés and trending restaurants to cultural
-                      events and weekend getaways.
+                     {translate('venezDescrription')}
                     </p>
                     <p className="text-paragraph text-sm sm:text-base mt-3">
-                      The Admin Dashboard allows administrators to efficiently
-                      manage and oversee all aspects of the platform, including
-                      content, users, analytics, and more.
+                      {translate('venezAdminDashboard')}
                     </p>
 
                     <motion.button
@@ -166,7 +165,7 @@ export default function HorizontalScrollSection() {
                         rel="noopener noreferrer"
                         className="flex items-center"
                       >
-                        Preview
+                        {translate('Preview')}
                         <ArrowRight width={20} height={20} className="ml-2" />
                       </Link>
                     </motion.button>
@@ -223,16 +222,13 @@ export default function HorizontalScrollSection() {
                     </div>
 
                     <h2 className="text-xl sm:text-2xl font-bold text-foreground mt-4">
-                      ZyloPay | Admin Dashboard
+                      {translate("ZyloPay | Admin Dashboard")}
                     </h2>
                     <p className="text-paragraph text-sm sm:text-base mt-4">
-                      ZyloPay is a SaaS platform that transforms the restaurant
-                      experience with smart QR menus—scan, order, and pay
-                      seamlessly without waiting for staff.
+                      {translate('zylopayDescription')}
                     </p>
                     <p className="text-paragraph text-sm sm:text-base mt-3">
-                      The admin dashboard lets restaurants create QR codes,
-                      manage menus, and organize items effortlessly.
+                      {translate('zylopayAdminDashboard')}
                     </p>
 
                     <motion.button
@@ -249,7 +245,7 @@ export default function HorizontalScrollSection() {
                         rel="noopener noreferrer"
                         className="flex items-center"
                       >
-                        Preview
+                        {translate('Preview')}
                         <ArrowRight width={20} height={20} className="ml-2" />
                       </Link>
                     </motion.button>
@@ -365,9 +361,7 @@ export default function HorizontalScrollSection() {
                     </h2>
 
                     <p className="text-paragraph text-sm sm:text-base mt-4">
-                      MaBonneFee is a SaaS platform that helps users manage,
-                      track, and optimize all their recurring subscriptions in
-                      one place with smart alerts and insights.
+                      {translate("Mbfdescription")}
                     </p>
 
                     <motion.button
@@ -384,7 +378,7 @@ export default function HorizontalScrollSection() {
                         rel="noopener noreferrer"
                         className="flex items-center"
                       >
-                        Preview
+                        {translate("Preview")}
                         <ArrowRight width={20} height={20} className="ml-2" />
                       </Link>
                     </motion.button>

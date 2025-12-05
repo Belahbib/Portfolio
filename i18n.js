@@ -3,6 +3,5 @@ module.exports = {
   defaultLocale: "en",
   pages: {
     "*": ["common"],
-    "/": ["home"], // app/page.tsx
   },
 };

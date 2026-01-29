@@ -12,10 +12,13 @@ import { useLocale, useTranslations } from "next-intl";
 import { setCookie } from "@/Helpers/cookies";
 import FranceFlag from "../icons/franceFlag";
 import UkFlag from "../icons/UkFlag";
+import { usePathname, useRouter } from "@/i18n/routing";
 
 export default function LanguageSwitcher() {
   const translate = useTranslations();
   const lang = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const locale = {
     fr: {
@@ -29,8 +32,19 @@ export default function LanguageSwitcher() {
   }[lang as string];
 
   const changeLanguage = async (lang: string) => {
+    router.replace(pathname, { locale: lang });
     await setCookie(COOKIE_NAMES.NEXT_LOCALE, lang);
-    window.location.reload();
+    // window.location.reload();
+  };
+
+  const switchLocale = async (newLocale: string) => {
+    if (newLocale === lang) return;
+
+    // 1. Update cookie
+    await setCookie(COOKIE_NAMES.NEXT_LOCALE, newLocale);
+
+    // 2. Refresh the page to re-render with new locale
+    router.refresh();
   };
 
   // trigger piple
@@ -52,7 +66,7 @@ export default function LanguageSwitcher() {
         <DropdownMenuItem>
           <button
             className="flex w-full items-center gap-2 border-0 p-1 font-semibold outline-none text-foreground"
-            onClick={() => changeLanguage("fr")}
+            onClick={() => switchLocale("fr")}
           >
             <FranceFlag />
             {translate("Français")}
@@ -63,7 +77,7 @@ export default function LanguageSwitcher() {
         <DropdownMenuItem>
           <button
             className="flex items-center gap-2 border-0 p-1 font-semibold outline-none text-foreground"
-            onClick={() => changeLanguage("en")}
+            onClick={() => switchLocale("en")}
           >
             <UkFlag />
             {translate("Anglais")}{" "}

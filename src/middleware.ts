@@ -14,7 +14,7 @@ export default async function middleware(request: NextRequest) {
   // Get the locale from the pathname
   const pathname = request.nextUrl.pathname;
   const pathnameLocale = routing.locales.find((locale) =>
-    pathname.startsWith(`/${locale}`)
+    pathname.startsWith(`/${locale}`),
   );
 
   // console.log({ cookieLocale, pathnameLocale });

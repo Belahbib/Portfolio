@@ -19,6 +19,8 @@ export default async function middleware(request: NextRequest) {
 
   // console.log({ cookieLocale, pathnameLocale });
 
+  // trgger
+
   const response = handleI18nRouting(request);
 
   if (pathnameLocale && pathnameLocale !== cookieLocale) {

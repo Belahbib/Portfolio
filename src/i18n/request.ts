@@ -1,10 +1,10 @@
+import { COOKIE_NAMES } from "@/constants/enum";
+import { getCookie } from "@/Helpers/cookies";
+import { getRequestConfig } from "next-intl/server";
 
-import { COOKIE_NAMES } from '@/constants/enum';
-import { getCookie } from '@/Helpers/cookies';
-import { getRequestConfig } from 'next-intl/server';
-
-export default getRequestConfig(async ({ requestLocale }) => {
-  const locale = (await getCookie(COOKIE_NAMES.NEXT_LOCALE)) || 'en';
+export default getRequestConfig(async () => {
+  const { value: locale = "en" } =
+    (await getCookie(COOKIE_NAMES.NEXT_LOCALE)) || {};
 
   // if (!locale || !routing.locales.includes(locale as any)) {
   //   locale = routing.defaultLocale;

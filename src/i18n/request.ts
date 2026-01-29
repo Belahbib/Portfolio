@@ -1,18 +1,23 @@
-
-import { COOKIE_NAMES } from '@/constants/enum';
-import { getCookie } from '@/Helpers/cookies';
-import { getRequestConfig } from 'next-intl/server';
+import { COOKIE_NAMES } from "@/constants/enum";
+import { getCookie } from "@/Helpers/cookies";
+import { getRequestConfig } from "next-intl/server";
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  const locale = (await getCookie(COOKIE_NAMES.NEXT_LOCALE)) || 'en';
+  // Ensure cookie is a string
+  let locale = await getCookie(COOKIE_NAMES.NEXT_LOCALE);
+  if (!locale || typeof locale !== "string") {
+    locale = "en";
+  }
 
-  // if (!locale || !routing.locales.includes(locale as any)) {
-  //   locale = routing.defaultLocale;
-  // }
-
-  const messages = {
-    ...(await import(`../locales/common/${locale}.json`)).default,
-  };
+  // Import messages safely
+  let messages = {};
+  try {
+    messages = (await import(`../locales/common/${locale}.json`)).default;
+  } catch (err) {
+    console.warn(`Locale "${locale}" not found, falling back to "en".`);
+    messages = (await import(`../locales/common/en.json`)).default;
+    locale = "en";
+  }
 
   return {
     locale,
